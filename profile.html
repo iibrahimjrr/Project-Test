@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Sehty</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+		
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="profile-picture-container">
+                <img id="profilePicture"
+                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150&h=150&fit=crop"
+                    alt="Profile picture" class="profile-picture">
+                <div class="profile-picture-overlay">
+                    <label for="pictureUpload" class="picture-upload-label">
+                        <i data-lucide="camera"></i>
+                        Change Picture
+                    </label>
+                    <input type="file" id="pictureUpload" accept="image/*" style="display: none;">
+                </div>
+            </div>
+            <div class="profile-title">
+                <h3 id="profileName">Loading...</h3>
+                <p>Personal health information and medical history</p>
+                <button id="editProfileBtn" class="edit-button">
+                    <i data-lucide="edit"></i>
+                    Edit Profile
+                </button>
+            </div>
+        </div>
+
+        <!-- Edit Profile Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Edit Profile</h4>
+                    <button class="close-button" id="closeModal">&times;</button>
+                </div>
+                <form id="editProfileForm" class="edit-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editUsername">Username</label>
+                        <input type="text" id="editUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email</label>
+                        <input type="email" id="editEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAge">Age</label>
+                        <input type="number" id="editAge" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGender">Gender</label>
+                        <select id="editGender" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDob">Date of Birth</label>
+                        <input type="date" id="editDob" name="dateOfBirth">
+                    </div>
+                    <div class="form-group">
+                        <label for="editBloodType">Blood Type</label>
+                        <select id="editBloodType" name="bloodType">
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editHeight">Height (cm)</label>
+                        <input type="number" id="editHeight" name="height">
+                    </div>
+                    <div class="form-group">
+                        <label for="editWeight">Weight (kg)</label>
+                        <input type="number" id="editWeight" name="weight">
+                    </div>
+                    <button type="submit" class="submit-button">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="profile-grid">
+            <div class="profile-card">
+                <h4>
+                    <i data-lucide="clipboard-list"></i>
+                    Personal Information
+                </h4>
+                <dl>
+                    <dt>Username</dt>
+                    <dd id="profileUsername">Loading...</dd>
+                    <dt>Email</dt>
+                    <dd id="profileEmail">Loading...</dd>
+                    <dt>Age</dt>
+                    <dd id="profileAge">Loading...</dd>
+                    <dt>Gender</dt>
+                    <dd id="profileGender">Loading...</dd>
+                    <dt>Date of Birth</dt>
+                    <dd id="profileDob">Loading...</dd>
+                </dl>
+            </div>
+
+            <div class="profile-card">
+                <h4>
+                    <i data-lucide="activity"></i>
+                    Vital Signs
+                </h4>
+                <div class="vital-signs">
+                    <div class="vital-sign">
+                        <div class="label">Blood Pressure</div>
+                        <div id="profileBP" class="value">--/--</div>
+                        <div class="label">mmHg</div>
+                    </div>
+                    <div class="vital-sign">
+                        <div class="label">Heart Rate</div>
+                        <div id="profileHR" class="value">--</div>
+                        <div class="label">bpm</div>
+                    </div>
+                    <div class="vital-sign">
+                        <div class="label">Temperature</div>
+                        <div id="profileTemp" class="value">--</div>
+                        <div class="label">°C</div>
+                    </div>
+                    <div class="vital-sign">
+                        <div class="label">Oxygen Level</div>
+                        <div id="profileO2" class="value">--</div>
+                        <div class="label">%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <h4>
+                    <i data-lucide="ruler"></i>
+                    Health Metrics
+                </h4>
+                <dl>
+                    <dt>Blood Type</dt>
+                    <dd id="profileBloodType">Loading...</dd>
+                    <dt>Height</dt>
+                    <dd id="profileHeight">Loading...</dd>
+                    <dt>Weight</dt>
+                    <dd id="profileWeight">Loading...</dd>
+                    <dt>BMI</dt>
+                    <dd id="profileBMI">Loading...</dd>
+                    <dt>Last Visit</dt>
+                    <dd id="profileLastVisit">Loading...</dd>
+                </dl>
+                <div class="health-status">
+                    <i data-lucide="activity"></i>
+                    <span id="bmiStatus">Calculating BMI status...</span>
+                </div>
+            </div>
+
+            <div class="profile-card wide">
+                <h4>
+                    <i data-lucide="calendar"></i>
+                    Recent Medical History
+                </h4>
+                <div class="timeline" id="medicalTimeline">
+                    <!-- Timeline items will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <h4>
+                    <i data-lucide="pill"></i>
+                    Current Medications
+                </h4>
+                <ul id="profileMedications">
+                    <li>Loading...</li>
+                </ul>
+            </div>
+
+            <div class="profile-card">
+                <h4>
+                    <i data-lucide="alert-circle"></i>
+                    Allergies & Conditions
+                </h4>
+                <h5>Allergies</h5>
+                <ul id="profileAllergies">
+                    <li>Loading...</li>
+                </ul>
+                <h5>Chronic Conditions</h5>
+                <ul id="profileConditions">
+                    <li>Loading...</li>
+                </ul>
+            </div>
+
+            <div class="profile-card">
+                <h4>
+                    <i data-lucide="syringe"></i>
+                    Immunization Records
+                </h4>
+                <ul id="profileVaccines">
+                    <li>Loading...</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+
+</html>
